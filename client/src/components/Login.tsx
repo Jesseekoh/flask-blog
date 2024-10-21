@@ -1,11 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FormEvent, useContext, useState } from 'react';
-import { CurrentUserContext } from '../contexts/CurrentuserContext';
+import {
+    CurrentUserContext,
+    CurrentUserContextType,
+    ICurrentUser,
+} from '../contexts/CurrentuserContext';
 import { toast } from 'react-toastify';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+    const { setCurrentUser } = useContext(
+        CurrentUserContext
+    ) as CurrentUserContextType;
     const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -21,19 +27,17 @@ const Login = () => {
 
         if (resp.ok) {
             const data = await resp.json();
-            const username = data.data.username;
-            const userId = data.data.id;
-            const userEmail = data.data.email;
+            const username: string = data.data.username;
+            const userId: string = data.data.id;
+            const userEmail: string = data.data.email;
 
-            setCurrentUser((prev) => {
-                return {
-                    ...prev,
-                    isLoggedIn: true,
-                    username,
-                    userId,
-                    userEmail,
-                };
-            });
+            setCurrentUser((prev: ICurrentUser) => ({
+                ...prev,
+                username,
+                isLoggedIn: true,
+                userId,
+                userEmail,
+            }));
 
             toast.success(data.message);
 

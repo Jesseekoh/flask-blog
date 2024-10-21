@@ -24,7 +24,7 @@ const BlogPage = () => {
             <span className="text-sm pb-2 inline-block font-bold">
                 {blog ? blog?.author : ''}
             </span>
-            <p className="text-xl leading-6 text-base/6">{blog?.content}</p>
+            <p className="text-xl leading-6">{blog?.content}</p>
         </div>
     );
 };

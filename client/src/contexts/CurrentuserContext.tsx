@@ -1,12 +1,23 @@
-import { createContext, useState, ReactElement, ReactNode } from 'react';
-export interface currentUserContextType {
+import {
+    createContext,
+    useState,
+    ReactNode,
+    Dispatch,
+    SetStateAction,
+} from 'react';
+export interface ICurrentUser {
     username: string;
     isLoggedIn: boolean;
     userId: string;
     userEmail: string;
 }
 
-export const CurrentUserContext = createContext<currentUserContextType | null>(
+export type CurrentUserContextType = {
+    currentUser: ICurrentUser;
+    // setCurrentUser: (user: ICurrentUser) => void;
+    setCurrentUser: Dispatch<SetStateAction<ICurrentUser>>;
+};
+export const CurrentUserContext = createContext<CurrentUserContextType | null>(
     null
 );
 
@@ -14,7 +25,7 @@ type Props = {
     children: string | ReactNode;
 };
 export const CurrentUserContextProvider = ({ children }: Props) => {
-    const [currentUser, setCurrentUser] = useState<currentUserContextType>({
+    const [currentUser, setCurrentUser] = useState<ICurrentUser>({
         username: '',
         userId: '',
         userEmail: '',

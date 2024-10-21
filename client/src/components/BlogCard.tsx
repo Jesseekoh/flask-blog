@@ -4,7 +4,7 @@ import { Blog } from '../dataStructures';
 import { formatRelativeTime } from '../utils';
 import {
     CurrentUserContext,
-    currentUserContextType,
+    CurrentUserContextType,
 } from '../contexts/CurrentuserContext';
 // import React from 'react';
 
@@ -13,9 +13,9 @@ interface Props {
 }
 
 const BlogCard: FC<Props> = ({ blog }) => {
-    const { currentUser, setCurrentUser } = useContext(
+    const { currentUser } = useContext(
         CurrentUserContext
-    ) as currentUserContextType;
+    ) as CurrentUserContextType;
     return (
         <div className="bg-white rounded-md px-4 py-4 border-solid border-[1px]">
             <Link to={`/blogs/${blog.id}`}>
