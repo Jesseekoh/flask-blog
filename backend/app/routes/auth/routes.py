@@ -54,11 +54,11 @@ def register():
     print('I got your request')
     user_exists = User.query.filter((User.username == username ) | (User.email == email)).all()
 
-    print(user_exists, 'register')
     if user_exists:
       return jsonify({'message': 'User already exists'}), 403
 
     user = User(email=email, password=generate_password_hash(password), username=username)
+    print("User is balablue")
     db.session.add(user)
 
     try:

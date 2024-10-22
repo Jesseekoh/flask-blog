@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from app.models.user import User
 from app.models.post import Post
 from datetime import timedelta
+from cachelib.file import FileSystemCache
 
 load_dotenv()
 def create_app(config_class= Config):
@@ -14,7 +15,7 @@ def create_app(config_class= Config):
   app.config.from_object(config_class)
   # app.config['CORS_HEADERS'] = 'Content-Type'
   CORS(app)
-  CORS(app, resources={r'/*': {'origins': 'http://localhost:5173'}})
+  CORS(app, resources={r'/*': {'origins': ['http://localhost:5173', 'http://localhost:8000']}})
 
   # app.permanent_session_lifetime = timedelta(minutes=30)
   Session(app)
