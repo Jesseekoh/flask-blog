@@ -1,5 +1,5 @@
 import os
-
+from cachelib.file import FileSystemCache
 # basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
@@ -9,3 +9,4 @@ class Config:
   SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')
   SESSION_TYPE = os.environ.get('SESSION_TYPE')
   SESSION_PERMANENT = os.environ.get('SESSION_PERMANENT')
+  SESSION_CACHELIB = FileSystemCache(threshold=500, cache_dir=f"{os.path.dirname(__file__)}/sessions")
