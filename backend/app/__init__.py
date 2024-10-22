@@ -14,7 +14,7 @@ def create_app(config_class= Config):
   app = Flask(__name__)
   app.config.from_object(config_class)
   # app.config['CORS_HEADERS'] = 'Content-Type'
-  CORS(app)
+  # CORS(app)
   CORS(app, resources={r'/*': {'origins': ['http://localhost:5173', 'http://localhost:8000']}})
 
   # app.permanent_session_lifetime = timedelta(minutes=30)
