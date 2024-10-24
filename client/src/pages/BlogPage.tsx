@@ -27,12 +27,14 @@ const BlogPage = () => {
     return (
         <div className="px-4 w-full max-w-5xl mx-auto bg-white mt-2 py-4">
             <h1 className="text-3xl font-black pb-2">{blog?.title}</h1>
-            <span className="text-sm pb-2 inline-block font-bold">
-                {blog ? formatRelativeTime(blog?.created_at) : ''}
-            </span>
-            <span className="text-sm pb-2 inline-block font-bold">
-                {blog ? blog?.author : ''}
-            </span>
+            <div className="blog-info flex justify-between">
+                <span className="text-sm pb-2 inline-block font-bold">
+                    {blog ? formatRelativeTime(blog?.created_at) : ''}
+                </span>
+                <span className="text-sm pb-2 inline-block font-bold">
+                    {blog ? blog?.author : ''}
+                </span>
+            </div>
             <p className="text-xl leading-6">{blog?.content}</p>
         </div>
     );
