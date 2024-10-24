@@ -13,15 +13,18 @@ load_dotenv()
 def create_app(config_class= Config):
   app = Flask(__name__)
   app.config.from_object(config_class)
-  # app.config['CORS_HEADERS'] = 'Content-Type'
+  # Enable CORS
   # CORS(app)
   CORS(app, resources={r'/*': {'origins': ['http://localhost:5173', 'http://localhost:8000']}})
 
-  # app.permanent_session_lifetime = timedelta(minutes=30)
+  app.permanent_session_lifetime = timedelta(minutes=30)
+  # Enable server-side sessions
   Session(app)
+  # Initialize the database
   db.init_app(app)
 
   with app.app_context():
+    # create all database tables
     # db.drop_all()
     db.create_all()
 
