@@ -4,7 +4,9 @@ const ProfilePage = () => {
     const { profileId } = useParams();
     const [profile, setProfile] = useState();
     const fetchProfile = async () => {
-        const resp = await fetch(`http://localhost:8000/user/${profileId}`);
+        const resp = await fetch(
+            import.meta.env.VITE_BASE_API_URL + `/user/${profileId}`
+        );
         if (resp.status == 200) {
             let data = await resp.json();
             data = data.data;
