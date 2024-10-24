@@ -29,7 +29,7 @@ export const formatRelativeTime = (dateString: string) => {
 
 export const fetchBlogs = async () => {
     try {
-        const resp = await fetch('http://localhost:8000/posts/');
+        const resp = await fetch(import.meta.env.VITE_BASE_API_URL + '/posts');
         if (resp.ok) {
             const data = await resp.json();
             return data.data;

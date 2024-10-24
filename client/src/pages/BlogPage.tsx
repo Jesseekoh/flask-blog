@@ -7,7 +7,7 @@ const BlogPage = () => {
     const [blog, setBlog] = useState<Blog | null>(null);
     const [isPending, setPending] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:8000/posts/${id}`).then((resp) =>
+        fetch(import.meta.env.VITE_BASE_API_URL + `/posts/${id}`).then((resp) =>
             resp.json().then((data) => {
                 setBlog(data.data);
                 setPending(false);
