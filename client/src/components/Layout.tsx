@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {
     CurrentUserContext,
-    currentUserContextType,
+    CurrentUserContextType,
 } from '../contexts/CurrentuserContext';
 const Layout = () => {
-    const { currentUser } = useContext(CurrentUserContext);
+    const { currentUser } = useContext(
+        CurrentUserContext
+    ) as CurrentUserContextType;
     return (
         <>
             <nav className="bg-white fixed top-0 left-0 right-0">
