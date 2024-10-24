@@ -1,8 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+type Profile = {
+    username: string;
+    email: string;
+};
 const ProfilePage = () => {
     const { profileId } = useParams();
-    const [profile, setProfile] = useState();
+    const [profile, setProfile] = useState<Profile>();
+
     const fetchProfile = async () => {
         const resp = await fetch(
             import.meta.env.VITE_BASE_API_URL + `/user/${profileId}`
