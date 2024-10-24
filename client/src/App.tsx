@@ -8,6 +8,7 @@ import Blogs from './components/Blogs';
 import BlogPage from './pages/BlogPage';
 import ProfilePage from './components/ProfilePage';
 import CreatePost from './pages/CreatePost';
+import Loader from './components/Loader';
 
 const Login = lazy(() => import('./components/Login'));
 const Register = lazy(() => import('./components/Register'));
@@ -30,7 +31,7 @@ function App() {
                     <Route
                         path="/login"
                         element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<Loader />}>
                                 <Login />
                             </Suspense>
                         }
@@ -38,7 +39,7 @@ function App() {
                     <Route
                         path="/register"
                         element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<Loader />}>
                                 <Register />
                             </Suspense>
                         }

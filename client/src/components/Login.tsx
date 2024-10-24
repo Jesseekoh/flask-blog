@@ -13,10 +13,11 @@ const Login = () => {
         CurrentUserContext
     ) as CurrentUserContextType;
     const navigate = useNavigate();
+    const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const resp = await fetch('http://localhost:8000/auth/login', {
+        const resp = await fetch(BASE_URL + '/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

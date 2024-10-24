@@ -15,7 +15,7 @@ def create_app(config_class= Config):
   app.config.from_object(config_class)
   # Enable CORS
   # CORS(app)
-  CORS(app, resources={r'/*': {'origins': ['http://localhost:5173', 'http://localhost:8000']}})
+  CORS(app, resources={r'/*': {'origins': ['http://localhost:5173', 'http://localhost:8000', 'https://flask-blog-4r23.onrender.com']}})
 
   app.permanent_session_lifetime = timedelta(minutes=30)
   # Enable server-side sessions
